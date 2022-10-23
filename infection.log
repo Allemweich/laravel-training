@@ -1,0 +1,203 @@
+Escaped mutants:
+================
+
+1) /var/www/html/app/Http/Controllers/ScoreController.php:10    [M] PublicVisibility
+
+--- Original
++++ New
+@@ @@
+ use Illuminate\Http\Request;
+ class ScoreController extends Controller
+ {
+-    public function index(Request $request) : JsonResponse
++    protected function index(Request $request) : JsonResponse
+     {
+         $this->validate($request, ['points' => 'required|int']);
+         $score = match ((int) $request->get('points')) {
+
+
+2) /var/www/html/app/Http/Controllers/ScoreController.php:12    [M] ArrayItemRemoval
+
+--- Original
++++ New
+@@ @@
+ {
+     public function index(Request $request) : JsonResponse
+     {
+-        $this->validate($request, ['points' => 'required|int']);
++        $this->validate($request, []);
+         $score = match ((int) $request->get('points')) {
+             107 => 300,
+             default => $request->get('points') * 2,
+
+
+3) /var/www/html/app/Http/Controllers/ScoreController.php:12    [M] MethodCallRemoval
+
+--- Original
++++ New
+@@ @@
+ {
+     public function index(Request $request) : JsonResponse
+     {
+-        $this->validate($request, ['points' => 'required|int']);
++        
+         $score = match ((int) $request->get('points')) {
+             107 => 300,
+             default => $request->get('points') * 2,
+
+
+4) /var/www/html/app/Http/Controllers/ScoreController.php:14    [M] CastInt
+
+--- Original
++++ New
+@@ @@
+     public function index(Request $request) : JsonResponse
+     {
+         $this->validate($request, ['points' => 'required|int']);
+-        $score = match ((int) $request->get('points')) {
++        $score = match ($request->get('points')) {
+             107 => 300,
+             default => $request->get('points') * 2,
+         };
+
+
+5) /var/www/html/app/Http/Controllers/ScoreController.php:14    [M] MatchArmRemoval
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->validate($request, ['points' => 'required|int']);
+         $score = match ((int) $request->get('points')) {
+-            107 => 300,
+             default => $request->get('points') * 2,
+         };
+         return response()->json(compact('score'), JsonResponse::HTTP_OK);
+     }
+ }
+
+
+6) /var/www/html/app/Http/Controllers/ScoreController.php:15    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->validate($request, ['points' => 'required|int']);
+         $score = match ((int) $request->get('points')) {
+-            107 => 300,
++            106 => 300,
+             default => $request->get('points') * 2,
+         };
+         return response()->json(compact('score'), JsonResponse::HTTP_OK);
+     }
+ }
+
+
+7) /var/www/html/app/Http/Controllers/ScoreController.php:15    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->validate($request, ['points' => 'required|int']);
+         $score = match ((int) $request->get('points')) {
+-            107 => 300,
++            108 => 300,
+             default => $request->get('points') * 2,
+         };
+         return response()->json(compact('score'), JsonResponse::HTTP_OK);
+     }
+ }
+
+
+8) /var/www/html/app/Http/Controllers/ScoreController.php:15    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->validate($request, ['points' => 'required|int']);
+         $score = match ((int) $request->get('points')) {
+-            107 => 300,
++            107 => 299,
+             default => $request->get('points') * 2,
+         };
+         return response()->json(compact('score'), JsonResponse::HTTP_OK);
+     }
+ }
+
+
+9) /var/www/html/app/Http/Controllers/ScoreController.php:15    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+     {
+         $this->validate($request, ['points' => 'required|int']);
+         $score = match ((int) $request->get('points')) {
+-            107 => 300,
++            107 => 301,
+             default => $request->get('points') * 2,
+         };
+         return response()->json(compact('score'), JsonResponse::HTTP_OK);
+     }
+ }
+
+
+10) /var/www/html/app/Http/Controllers/ScoreController.php:16    [M] DecrementInteger
+
+--- Original
++++ New
+@@ @@
+         $this->validate($request, ['points' => 'required|int']);
+         $score = match ((int) $request->get('points')) {
+             107 => 300,
+-            default => $request->get('points') * 2,
++            default => $request->get('points') * 1,
+         };
+         return response()->json(compact('score'), JsonResponse::HTTP_OK);
+     }
+ }
+
+
+11) /var/www/html/app/Http/Controllers/ScoreController.php:16    [M] IncrementInteger
+
+--- Original
++++ New
+@@ @@
+         $this->validate($request, ['points' => 'required|int']);
+         $score = match ((int) $request->get('points')) {
+             107 => 300,
+-            default => $request->get('points') * 2,
++            default => $request->get('points') * 3,
+         };
+         return response()->json(compact('score'), JsonResponse::HTTP_OK);
+     }
+ }
+
+
+12) /var/www/html/app/Http/Controllers/ScoreController.php:16    [M] Multiplication
+
+--- Original
++++ New
+@@ @@
+         $this->validate($request, ['points' => 'required|int']);
+         $score = match ((int) $request->get('points')) {
+             107 => 300,
+-            default => $request->get('points') * 2,
++            default => $request->get('points') / 2,
+         };
+         return response()->json(compact('score'), JsonResponse::HTTP_OK);
+     }
+ }
+
+
+Timed Out mutants:
+==================
+
+Skipped mutants:
+================
+
+Not Covered mutants:
+====================
