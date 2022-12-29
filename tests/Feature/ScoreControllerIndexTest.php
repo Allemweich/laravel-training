@@ -11,14 +11,13 @@ class ScoreControllerIndexTest extends TestCase
     {
         $score = $this->getJson(route('score.index', ['points' => $in]))->assertOk()->json('score');
 
-        // $this->assertEquals($out, $score);
+        $this->assertEquals($out, $score);
     }
 
-    /**
     public function testUnprocessableWhenPointsMissing(): void
     {
         $this->getJson(route('score.index'))->assertUnprocessable();
-    } */
+    }
 
     public function dataDoubles(): array
     {
@@ -28,7 +27,7 @@ class ScoreControllerIndexTest extends TestCase
             [2, 4],
             [32, 64],
             [-32, -64],
-            // [107, 300],
+            [107, 300],
         ];
     }
 }
